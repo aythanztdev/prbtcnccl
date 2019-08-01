@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "0e18385d-9b22-4af9-ad3a-d6e87598044d",
+		"name": "PRBTCNCCL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Blood of an Exile (Dragons of Terra)\",\n\t\"price\": 29.99,\n\t\"currency\": \"EUR\",\n\t\"featured\": false,\n\t\"category\": 4\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/product",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/products",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products Featured",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/products/featured?currency=EUR",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"featured"
+					],
+					"query": [
+						{
+							"key": "currency",
+							"value": "EUR"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Science Fiction & Fantasy\",\n\t\"description\": \"Find your new favorite book in science fiction or fantasy. Plus, see our picks for the best science fiction and fantasy of the year so far.\"\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/category",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Category Copy",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Arts & Photography Books\",\n\t\"description\": \"Explore the arts with titles on art history, artists, fashion, photography, and browse our picks for best art and photography books of the year.\"\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/api/category/1",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"category",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Category",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{URL}}/api/category/1",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"category",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
