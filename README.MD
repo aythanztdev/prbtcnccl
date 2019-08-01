@@ -1,4 +1,4 @@
-# Building an api using Symfony / API Platform
+# Building an api using Symfony (without rest bundles/frameworks)
 
 ## Requirements
 * MySQL
