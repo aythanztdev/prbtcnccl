@@ -6,9 +6,14 @@ use App\Traits\TimeTrait;
 use App\DBAL\Types\CurrencyEnum;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
+ * @UniqueEntity("name")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Product
 {
@@ -16,35 +21,40 @@ class Product
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"product"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
+     * @Groups({"product"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2)
      * @Assert\NotBlank
+     * @Groups({"product"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="CurrencyEnum")
      * @Assert\NotBlank
+     * @Groups({"product"})
      */
     private $currency;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank
+     * @Assert\NotNull
      */
     private $featured = false;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
+     * @Groups({"product"})
      */
     private $category;
 

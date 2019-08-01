@@ -7,9 +7,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * @UniqueEntity("name")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Category
 {
@@ -17,18 +23,21 @@ class Category
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"category", "category-deleted"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
+     * @Groups({"category", "category-deleted", "product"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank
+     * @Groups({"category", "category-deleted"})
      */
     private $description;
 
@@ -39,6 +48,7 @@ class Category
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"category"})
      */
     private $createdAt;
 
@@ -48,6 +58,7 @@ class Category
     private $updatedAt;
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"category-deleted"})
      */
     private $deletedAt;
 

@@ -6,6 +6,23 @@ namespace App\Traits;
 
 trait TimeTrait
 {
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime();
+    }
+
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
