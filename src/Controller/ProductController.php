@@ -74,7 +74,7 @@ class ProductController extends AbstractController
      */
     public function getAllFeatured(Request $request): Response
     {
-        $products = $this->productService->findAllFeatured();
+        $products = $this->productService->findFeatured();
 
         if ($request->query->has('currency')) {
             $currency = $request->query->get('currency');

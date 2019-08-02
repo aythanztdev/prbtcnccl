@@ -19,7 +19,7 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function findAllFeatured()
+    public function findFeatured()
     {
         $qb = $this->createQueryBuilder('p');
         return

@@ -35,9 +35,9 @@ class ProductService
         return $this->productRepository->findAll();
     }
 
-    public function findAllFeatured()
+    public function findFeatured()
     {
-        return $this->productRepository->findAllFeatured();
+        return $this->productRepository->findBy(['deletedAt' => null, 'featured' => true]);
     }
 
     public function calculatePriceWithCurrency($products, string $currency)
